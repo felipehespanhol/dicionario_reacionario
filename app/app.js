@@ -14,4 +14,9 @@ dicionario.config(function($routeProvider) {
       controller: 'NovoArgumentoController',
       controllerAs: 'novo_argumento'
     })
+    .when('/argumentos/:id', {
+      templateUrl: viewBase + 'argumentos/show.html',
+      controller: 'ArgumentoController',
+      controllerAs: 'argumento'
+    })
 });
