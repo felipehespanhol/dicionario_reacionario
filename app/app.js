@@ -19,4 +19,14 @@ dicionario.config(function($routeProvider) {
       controller: 'ArgumentoController',
       controllerAs: 'argumento'
     })
+    .when('/usuarios/new', {
+      templateUrl: viewBase + 'usuarios/new.html',
+      controller: 'NovoUsuarioController',
+      controllerAs: 'usuarios'
+    })
+    .when('/sessoes/new', {
+      templateUrl: viewBase + 'sessoes/new.html',
+      controller: 'NovaSessaoController',
+      controllerAs: 'nova_sessao'
+    });
 });

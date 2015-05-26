@@ -27,7 +27,10 @@
     <script type="text/javascript" src="app/controllers/argumentos/argumentosController.js"></script>
     <script type="text/javascript" src="app/controllers/argumentos/novoArgumentoController.js"></script>
     <script type="text/javascript" src="app/controllers/argumentos/argumentoController.js"></script>
+    <script type="text/javascript" src="app/controllers/usuarios/novoUsuarioController.js"></script>
+    <script type="text/javascript" src="app/controllers/sessoes/novaSessaoController.js"></script>
     <script type="text/javascript" src="app/services/models/argumento.js"></script>
+    <script type="text/javascript" src="app/services/models/usuario.js"></script>
   </head>
 
   <body ng-app="dicionario">
@@ -39,6 +42,14 @@
         <div class="navbar-collapse collapse navbar-right">
           <ul class="nav navbar-nav">
             <li><a href="#/argumentos/new">Novo argumento</a></li>
+            <li><a href="#/usuarios/new">Cadastro</a></li>
+            <?php
+              if($_SESSION['USER_ID']) {
+                echo '<li>Logado</li>';
+              } else {
+                echo '<li><a href="#/sessoes/new">Login</a></li>';
+              }
+            ?>
           </ul>
         </div>
       </div>

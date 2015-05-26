@@ -1,0 +1,22 @@
+<form name='form' ng-submit="cadastrarUsuario()">
+  <div class="form-group">
+    <label for="nome">Nome</label>
+    <input type="text" class="form-control" id="nome_usuario"
+        placeholder="Nome" ng-model="novoUsuario.nome">
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" class="form-control" id="email_usuario"
+        placeholder="Email" ng-model="novoUsuario.email">
+  </div>
+  <div class="form-group">
+    <label for="senha">Senha</label>
+    <input type="password" class="form-control" id="senha_usuario"
+        ng-model="novoUsuario.senha">
+    <p class="help-block">Example block-level help text here.</p>
+  </div>
+
+  <div>
+    <button class="btn btn-default">Submit</button>
+  </div>
+</form>
