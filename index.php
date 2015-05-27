@@ -1,5 +1,9 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="dicionario">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,11 +33,15 @@
     <script type="text/javascript" src="app/controllers/argumentos/argumentoController.js"></script>
     <script type="text/javascript" src="app/controllers/usuarios/novoUsuarioController.js"></script>
     <script type="text/javascript" src="app/controllers/sessoes/novaSessaoController.js"></script>
+    <script type="text/javascript" src="app/controllers/applicationController.js"></script>
     <script type="text/javascript" src="app/services/models/argumento.js"></script>
     <script type="text/javascript" src="app/services/models/usuario.js"></script>
+    <script type="text/javascript" src="app/services/models/sessao.js"></script>
+    <script type="text/javascript" src="app/services/authService.js"></script>
+    <script type="text/javascript" src="app/directives/loginDirective.js"></script>
   </head>
 
-  <body ng-app="dicionario">
+  <body ng-controller="ApplicationController">
     <nav class="navbar navbar-default navbar-static-top">
       <div class="container">
         <div class="navbar-header">
@@ -43,20 +51,19 @@
           <ul class="nav navbar-nav">
             <li><a href="#/argumentos/new">Novo argumento</a></li>
             <li><a href="#/usuarios/new">Cadastro</a></li>
-            <?php
-              if($_SESSION['USER_ID']) {
-                echo '<li>Logado</li>';
-              } else {
-                echo '<li><a href="#/sessoes/new">Login</a></li>';
-              }
-            ?>
+            <li ng-if="currentUser"><a href="#">Deslogar</a></li>
+            <li ng-if="currentUser == null"><a href="#/sessoes/new">Login</a></li>
           </ul>
         </div>
       </div>
     </nav>
 
+
     <div class="container" id="main-container">
       <div ng-view></div>
+      <?php
+        print_r($_SESSION);
+      ?>
     </div>
   </body>
 </html>
