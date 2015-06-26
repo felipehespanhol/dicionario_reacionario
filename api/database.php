@@ -2,8 +2,8 @@
 
 function database_connection() {
   $servername = "localhost";
-  $username = "root";
-  $password = "root";
+  $username = "felipe";
+  $password = "";
   $dbname = "dicionario_reacionario";
 
   $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);

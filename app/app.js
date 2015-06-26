@@ -27,9 +27,10 @@ dicionario.config(function($routeProvider, USER_ROLES) {
     .when('/argumentos/new', {
       templateUrl: viewBase + 'argumentos/new.html',
       controller: 'NovoArgumentoController',
-      data: {
-        authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor]
-      }
+      controllerAs: 'novoArgumento'
+      //data: {
+      //  authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor]
+      //}
     })
     .when('/argumentos/:id', {
       templateUrl: viewBase + 'argumentos/show.html',

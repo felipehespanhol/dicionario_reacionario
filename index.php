@@ -39,6 +39,20 @@ session_start();
     <script type="text/javascript" src="app/services/models/sessao.js"></script>
     <script type="text/javascript" src="app/services/authService.js"></script>
     <script type="text/javascript" src="app/directives/loginDirective.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      dicionario.run(['$rootScope', 'Usuario', function($rootScope, Usuario) {
+        <?php
+          if($_SESSION['USER_ID']) {
+            echo('
+              Usuario.get({ id: "'.$_SESSION['USER_ID'].'" }, function(user) {
+                $rootScope.currentUser = user;
+              });
+            ');
+          }
+          //print_r($_SESSION['USER_ID']);
+        ?>
+      }]);
+    </script>
   </head>
 
   <body ng-controller="ApplicationController">
@@ -61,9 +75,7 @@ session_start();
 
     <div class="container" id="main-container">
       <div ng-view></div>
-      <?php
-        print_r($_SESSION);
-      ?>
     </div>
+
   </body>
 </html>

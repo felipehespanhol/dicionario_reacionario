@@ -1,4 +1,4 @@
-dicionario.factory('AuthService', function($http, Sessao){
+dicionario.factory('AuthService', ['$http', 'Sessao', function($http, Sessao) {
   var authService = {};
 
   authService.login = function(sessao) {
@@ -12,14 +12,14 @@ dicionario.factory('AuthService', function($http, Sessao){
 
   authService.isAuthenticated = function() {
     return !!Sessao.userId;
-  }
+  };
 
   authService.isAuthorized = function(authorizedRoles) {
     if (!angular.isArray(authorizedRoles)) {
       authorizedRoles = [authorizedRoles];
     }
     return (authService.isAuthenticated() && authorizedRoles.indexOf(Sessao.userRole) !== -1);
-  }
+  };
 
   return authService;
-});
+}]);

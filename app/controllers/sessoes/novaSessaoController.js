@@ -2,7 +2,8 @@ var NovaSessaoController = function($scope, $http, $location, $rootScope, Sessao
   $scope.login = function() {
     AuthService.login($scope.session).then(function(user) {
       $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-      $scope.setCurrentUser(user);
+      $scope.setCrrentUser(user);
+      $location.path('/');
     }, function() {
       $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
     });
@@ -22,4 +23,4 @@ var NovaSessaoController = function($scope, $http, $location, $rootScope, Sessao
   };
 };
 
-dicionario.controller('NovaSessaoController', NovaSessaoController);
+dicionario.controller('NovaSessaoController', ['$scope', '$http', '$rootScope', 'Sessao', 'AuthService', 'AUTH_EVENTS', NovaSessaoController]);

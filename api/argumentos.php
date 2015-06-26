@@ -65,17 +65,14 @@ switch($_SERVER['REQUEST_METHOD']) {
   case 'GET':
     $url = $_SERVER['PHP_SELF'];
     $argumento_id = explode('/', $url)[4];
-
-    if($argumento_id) { 
+    if($argumento_id) {
       render_argumento($argumento_id);
     } else {
       render_argumentos();
     }
-
     break;
   case 'POST':
     save_and_render_argumento();
-
     break;
   case 'PUT':
     break;

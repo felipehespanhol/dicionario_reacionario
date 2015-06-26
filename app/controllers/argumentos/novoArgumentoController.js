@@ -2,9 +2,9 @@ var NovoArgumentoController = function($scope, $location, Argumento) {
   $scope.novoArgumento = new Argumento();
 
   $scope.cadastrarArgumento = function() {
-    $scope.novoArgumento.$save(function() {
+    Argumento.save($scope.novoArgumento, function() {
       $location.path('/');
     });
   };
 };
-dicionario.controller('NovoArgumentoController', NovoArgumentoController);
+dicionario.controller('NovoArgumentoController', ['$scope', '$location', 'Argumento', NovoArgumentoController]);

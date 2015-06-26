@@ -17,25 +17,26 @@ function handle_login() {
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if($result['senha'] == $senha) {
+      $_SESSION['USER_ID'] = $result['id'];
+      echo '{
+        "id":"'.$result['id'].'",
+        "user": {
+          "id":"'.$result['id'].'",
+          "email": "'.$email.'",
+          "nome": "'.$result['nome'].'",
+          "role": "'.$result['role'].'"
+        }
+      }';
+    } else {
+      http_response_code(401);
+    }
   } catch(PDOException $e) {
     http_response_code(500);
     echo "Error: " . $e->getMessage();
   }
 
-  if($result['senha'] == $senha) {
-    $_SESSION['USER_ID'] = $result['id'];
-    echo '{
-      "id":"'.$result['id'].'",
-      "user": {
-        "id":"'.$result['id'].'",
-        "email": "'.$email.'",
-        "nome": "'.$result['nome'].'",
-        "role": "'.$result['role'].'"
-      }
-    }';
-  } else {
-    http_response_code(401);
-  }
 }
 
 switch($_SERVER['REQUEST_METHOD']) {
